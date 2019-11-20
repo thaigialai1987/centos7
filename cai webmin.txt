@@ -1,0 +1,28 @@
+rm /etc/httpd/conf.d/tailieu.gila.bca.conf
+systemctl restart httpd
+ yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect
+ 
+ /etc/yum.repos.d/webmin.repo
+ 
+ 
+ [Webmin]
+name=Webmin Distribution Neutral
+#baseurl=https://download.webmin.com/download/yum
+mirrorlist=https://download.webmin.com/download/yum/mirrorlist
+enabled=1
+ 
+ 
+ wget http://www.webmin.com/jcameron-key.asc
+ 
+ yum install pam-devel 
+ yum install perl-Authen-PAM
+ 
+ 
+# systemctl start webmin
+# systemctl enable webmin
+
+sudo firewall-cmd --list-all
+sudo firewall-cmd --add-port=10000/tcp
+sudo firewall-cmd --list-ports
+
+firewall-cmd --reload
